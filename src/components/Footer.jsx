@@ -1,31 +1,44 @@
 export default function Footer() {
   return (
-    <footer className="footer mt-5">
-      <div className="container py-4">
-        <div className="row">
+    <footer className="footer">
+      <div className="container py-5">
+        <div className="row g-4">
+
           <div className="col-md-4">
-            <h5>LastKey</h5>
-            <p className="text-muted">
-              Your digital legacy, protected and delivered with trust.
+            <h4 className="gold">LastKey</h4>
+            <p className="text-muted mt-3">
+              LastKey helps you protect your digital life and ensures
+              your important information reaches the right people,
+              at the right time.
             </p>
           </div>
 
           <div className="col-md-4">
-            <h6>Quick Links</h6>
+            <h6>Platform</h6>
             <ul className="list-unstyled">
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li>Digital Will Creation</li>
+              <li>Nominee Assignment</li>
+              <li>Secure Document Vault</li>
+              <li>Legal Verification</li>
             </ul>
           </div>
 
           <div className="col-md-4">
-            <h6>Legal</h6>
-            <p className="text-muted">
-              © {new Date().getFullYear()} LastKey  
-              <br /> All rights reserved.
-            </p>
+            <h6>Security & Trust</h6>
+            <ul className="list-unstyled">
+              <li>End-to-End Encryption</li>
+              <li>Zero Knowledge Storage</li>
+              <li>Multi-layer Verification</li>
+              <li>GDPR Compliant</li>
+            </ul>
           </div>
+
+        </div>
+
+        <hr className="my-4" />
+
+        <div className="text-center text-muted">
+          © {new Date().getFullYear()} LastKey — Your Digital Legacy Secured
         </div>
       </div>
     </footer>

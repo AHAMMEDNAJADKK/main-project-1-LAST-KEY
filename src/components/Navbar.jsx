@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
       <div className="container">
 
-    
-        <Link className="navbar-brand gold fw-bold" to="/">
+        {/* LOGO */}
+        <NavLink className="navbar-brand gold fw-bold" to="/">
           LastKey
-        </Link>
+        </NavLink>
 
-        
+        {/* HAMBURGER */}
         <button
           className="navbar-toggler"
           type="button"
@@ -23,41 +23,99 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
+        {/* MENU */}
         <div className="collapse navbar-collapse" id="lastKeyNavbar">
           <ul className="navbar-nav ms-auto">
 
             <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                Home
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/about">About</Link>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                About
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/how">How It Works</Link>
+              <NavLink
+                to="/how"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                How It Works
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/storage">Storage</Link>
+              <NavLink
+                to="/storage"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                Storage
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/security">Security</Link>
+              <NavLink
+                to="/security"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                Security
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/contact">Contact</Link>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                Contact
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/login">Login</Link>
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active-link" : "nav-link"
+                }
+              >
+                Login
+              </NavLink>
             </li>
 
             <li className="nav-item">
-              <Link className="btn btn-outline-warning ms-lg-2" to="/register">
+              <NavLink
+                to="/register"
+                className={({ isActive }) =>
+                  isActive
+                    ? "btn btn-warning ms-lg-2"
+                    : "btn btn-outline-warning ms-lg-2"
+                }
+              >
                 Register
-              </Link>
+              </NavLink>
             </li>
 
           </ul>
