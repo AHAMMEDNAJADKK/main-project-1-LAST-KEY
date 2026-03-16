@@ -1,39 +1,27 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Register() {
+  const navigate = useNavigate();
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    navigate("/login");
+  };
+
   return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="glass-card p-4">
-            <h2 className="text-center mb-4">Create Your Account</h2>
+    <div className="auth-container">
+      <h2>Create Your LastKey Account</h2>
 
-            <form>
-              <div className="mb-3">
-                <label>Full Name</label>
-                <input type="text" className="form-control" />
-              </div>
+      <form onSubmit={handleRegister}>
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <button>Create Account</button>
+      </form>
 
-              <div className="mb-3">
-                <label>Email</label>
-                <input type="email" className="form-control" />
-              </div>
-
-              <div className="mb-3">
-                <label>Password</label>
-                <input type="password" className="form-control" />
-              </div>
-
-              <div className="mb-3">
-                <label>Confirm Password</label>
-                <input type="password" className="form-control" />
-              </div>
-
-              <button className="btn-gold w-100 mt-3">
-                Register Securely
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+      <p className="note">
+        Nominees will be added later from your vault
+      </p>
     </div>
   );
 }

@@ -1,71 +1,49 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [showReset, setShowReset] = useState(false);
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // COMMON LOGIN FLAG
+    localStorage.setItem("isLoggedIn", "true");
+
+    // FRONTEND-ONLY ROLE LOGIC
+    if (email.toLowerCase().includes("nominee")) {
+      localStorage.setItem("role", "nominee");
+      localStorage.setItem("deathVerified", "false");
+
+      navigate("/nominee/upload-death-certificate");
+    } else {
+      localStorage.setItem("role", "user");
+
+      navigate("/user/home");
+    }
+  };
 
   return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-md-5">
-          <div className="glass-card p-4">
-            <h2 className="text-center mb-4">Login to LastKey</h2>
+    <div className="auth-container">
+      <h2>Login to LastKey</h2>
 
-            <form>
-              <div className="mb-3">
-                <label>Email</label>
-                <input type="email" className="form-control" />
-              </div>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          required
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-              <div className="mb-3">
-                <label>Password</label>
-                <input type="password" className="form-control" />
-              </div>
+        <input
+          type="password"
+          placeholder="Password"
+          required
+        />
 
-              <div className="d-flex justify-content-between">
-                <small
-                  className="text-warning"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => setShowReset(true)}
-                >
-                  Forgot Password?
-                </small>
-              </div>
-
-              <button className="btn-gold w-100 mt-3">Login</button>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      {/* 🔐 RESET PASSWORD MODAL */}
-      {showReset && (
-        <div className="modal-backdrop-custom">
-          <div className="modal-box">
-            <h4>Reset Password</h4>
-            <p className="text-muted">
-              Enter your email to receive password reset instructions.
-            </p>
-
-            <input
-              type="email"
-              className="form-control mb-3"
-              placeholder="Your email"
-            />
-
-            <div className="d-flex gap-2">
-              <button className="btn btn-warning w-100">
-                Send Reset Link
-              </button>
-              <button
-                className="btn btn-secondary w-100"
-                onClick={() => setShowReset(false)}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 }
